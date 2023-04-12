@@ -98,26 +98,26 @@ const Weather = () => {
           <div className="">
             <p className="text-center capitalize text-2xl">{city}</p>
             <p className="text-center  ">
-              {/* {days[0].day} {new Date().toLocaleDateString()} */}
+              {days[0].day} {new Date().toLocaleDateString()}
             </p>
             <img
               className="w-56 h-56 m-auto"
-              // src={`https://openweathermap.org/img/wn/${days[0].weather.icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${days[0].weather.icon}@2x.png`}
               alt=""
             />
             <div className="flex justify-around my-2">
-              {/* <p className="text-2xl font-bold">{days[0].temperature} °C</p> */}
+              <p className="text-2xl font-bold">{days[0].temperature} °C</p>
               <p className="text-2xl font-bold capitalize ">
                 {/* {days[0].weather.description} */}
               </p>
             </div>
             <div className="flex justify-around my-2">
-              {/* <p className="md:text-xl">Pressure : {days[0].pressure}</p> */}
-              {/* <p className=" md:text-xl ">Wind : {days[0].wind} m/s</p> */}
+              <p className="md:text-xl">Pressure : {days[0].pressure}</p>
+              <p className=" md:text-xl ">Wind : {days[0].wind} m/s</p>
             </div>
             <div className="flex justify-around my-2">
-              {/* <p className="md:text-xl">Clouds : {days[0].clouds.all}%</p> */}
-              {/* <p className="md:text-xl">Humidity : {days[0].humidity}%</p> */}
+              <p className="md:text-xl">Clouds : {days[0].clouds.all}%</p>
+              <p className="md:text-xl">Humidity : {days[0].humidity}%</p>
             </div>
           </div>
         </div>
