@@ -4,7 +4,6 @@ const Weather = () => {
   const [city, setCity] = useState("Delhi");
   const [weather, setWeather] = useState(null);
   const [days, setDays] = useState([]);
-  const loggedIn = JSON.parse(localStorage.getItem("authToken"));
   const apiKey = "411992309b1152b0006bfab0dd61f1c0";
   const baseURL = "https://api.openweathermap.org/data/2.5/forecast";
 
@@ -35,7 +34,7 @@ const Weather = () => {
           console.log(error);
         });
     }
-  }, [city, loggedIn]);
+  }, [city]);
 
   const getLocationName = async (position) => {
     try {
@@ -90,37 +89,36 @@ const Weather = () => {
         className="input input-bordered input-sm w-5/6 md:w-1/3  flex justify-center  m-auto "
       />
 
-      <div className="card lg:card-side bg-base-100 shadow-xl  flex justify-center">
-        <div
-          className="lg:w-2/5 rounded-md h-96 m-auto w-full"
-          // style={{ backgroundColor: "lightyellow" }}
-        >
-          <div className="">
-            <p className="text-center capitalize text-2xl">{city}</p>
-            <p className="text-center  ">
-              {days[0].day} {new Date().toLocaleDateString()}
-            </p>
-            <img
-              className="w-56 h-56 m-auto"
-              src={`https://openweathermap.org/img/wn/${days[0].weather.icon}@2x.png`}
-              alt=""
-            />
-            <div className="flex justify-around my-2">
-              <p className="text-2xl font-bold">{days[0].temperature} °C</p>
-              <p className="text-2xl font-bold capitalize ">
-                {/* {days[0].weather.description} */}
+      <div className="card lg:card-side bg-base-100   flex justify-center">
+        {days.length > 0 && (
+          <div className="lg:w-2/5 rounded-md h-96 m-auto w-full">
+            <div className="">
+              <p className="text-center capitalize text-2xl">{city}</p>
+              <p className="text-center">
+                {days[0].day} {new Date().toLocaleDateString()}
               </p>
-            </div>
-            <div className="flex justify-around my-2">
-              <p className="md:text-xl">Pressure : {days[0].pressure}</p>
-              <p className=" md:text-xl ">Wind : {days[0].wind} m/s</p>
-            </div>
-            <div className="flex justify-around my-2">
-              <p className="md:text-xl">Clouds : {days[0].clouds.all}%</p>
-              <p className="md:text-xl">Humidity : {days[0].humidity}%</p>
+              <img
+                className="w-56 h-56 m-auto"
+                src={`https://openweathermap.org/img/wn/${days[0].weather.icon}@2x.png`}
+                alt=""
+              />
+              <div className="flex justify-around my-2">
+                <p className="text-2xl font-bold">{days[0].temperature} °C</p>
+                <p className="text-2xl font-bold capitalize ">
+                  {days[0].weather.description}
+                </p>
+              </div>
+              <div className="flex justify-around my-2">
+                <p className="md:text-xl">Pressure : {days[0].pressure}</p>
+                <p className=" md:text-xl ">Wind : {days[0].wind} m/s</p>
+              </div>
+              <div className="flex justify-around my-2">
+                <p className="md:text-xl">Clouds : {days[0].clouds.all}%</p>
+                <p className="md:text-xl">Humidity : {days[0].humidity}%</p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         <div className="card-body  ">
           {days.slice(1).map((daydata, index) => (
