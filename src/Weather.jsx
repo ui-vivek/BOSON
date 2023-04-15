@@ -28,7 +28,7 @@ const Weather = () => {
         })
         .then((response) => {
           setWeather(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -75,7 +75,7 @@ const Weather = () => {
       setDays(newDays);
     }
   }, [weather]);
-  console.log(days);
+  // console.log(days);
   return (
     <div className="lg:px-4 mt-2 md:m-0">
       <input
